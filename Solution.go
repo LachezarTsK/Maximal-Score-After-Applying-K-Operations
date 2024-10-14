@@ -41,14 +41,12 @@ func (pq PriorityQueue) Swap(first int, second int) {
     pq[first], pq[second] = pq[second], pq[first]
 }
 
-func (pq *PriorityQueue) Push(object any) {
-    *pq = append(*pq, object.(int))
+func (pq *PriorityQueue) Push(value any) {
+    *pq = append(*pq, value.(int))
 }
 
 func (pq *PriorityQueue) Pop() any {
-    pqBeforePop := *pq
-    length := len(pqBeforePop)
-    item := pqBeforePop[length - 1]
-    *pq = pqBeforePop[0 : length - 1]
-    return item
+    value := (*pq)[pq.Len() - 1]
+    *pq = (*pq)[0 : pq.Len() - 1]
+    return value
 }
